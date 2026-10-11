@@ -26,7 +26,7 @@ function JobMatchHistory() {
   useEffect(() => {
     const loadMatches = async () => {
       try {
-        const response = await fetch("http://localhost:5000/job-matches", {
+        const response = await fetch("https://resumind-ai-analyzer.onrender.com/job-matches", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -61,7 +61,7 @@ function JobMatchHistory() {
 
   const deleteMatch = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/job-matches/${id}`, {
+      const response = await fetch(`https://resumind-ai-analyzer.onrender.com/job-matches/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

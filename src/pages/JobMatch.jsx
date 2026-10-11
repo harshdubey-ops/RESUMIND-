@@ -28,7 +28,7 @@ function JobMatch() {
   useEffect(() => {
     const loadResumes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/resumes", {
+        const response = await fetch("https://resumind-ai-analyzer.onrender.com/resumes", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -68,7 +68,7 @@ function JobMatch() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/job-match", {
+      const response = await fetch("https://resumind-ai-analyzer.onrender.com/job-match", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -27,7 +27,7 @@ function Signup() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/signup", {
+      const response = await fetch("https://resumind-ai-analyzer.onrender.com/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

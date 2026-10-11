@@ -206,7 +206,7 @@ function ResumeBuilder() {
   useEffect(() => {
     const loadVersions = async () => {
       try {
-        const response = await fetch("http://localhost:5000/resume-versions", {
+        const response = await fetch("https://resumind-ai-analyzer.onrender.com/resume-versions", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         const data = await response.json();
@@ -264,7 +264,7 @@ function ResumeBuilder() {
     setError("");
     setNotice("");
     try {
-      const response = await fetch(`http://localhost:5000/resume-versions/${selectedVersionId}`, {
+      const response = await fetch(`https://resumind-ai-analyzer.onrender.com/resume-versions/${selectedVersionId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -303,7 +303,7 @@ function ResumeBuilder() {
     setError("");
     setNotice("");
     try {
-      const response = await fetch("http://localhost:5000/resume-versions", {
+      const response = await fetch("https://resumind-ai-analyzer.onrender.com/resume-versions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -339,7 +339,7 @@ function ResumeBuilder() {
     setError("");
     setNotice("");
     try {
-      const response = await fetch(`http://localhost:5000/resume-versions/${selectedVersionId}`, {
+      const response = await fetch(`https://resumind-ai-analyzer.onrender.com/resume-versions/${selectedVersionId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });

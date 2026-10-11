@@ -23,7 +23,7 @@ function ResumeHistory() {
   useEffect(() => {
     const loadResumes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/resumes", {
+        const response = await fetch("https://resumind-ai-analyzer.onrender.com/resumes", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -49,7 +49,7 @@ function ResumeHistory() {
 
   const deleteResume = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/resumes/${id}`, {
+      const response = await fetch(`https://resumind-ai-analyzer.onrender.com/resumes/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
