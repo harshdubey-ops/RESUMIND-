@@ -9,6 +9,7 @@ const JobMatch = require("./models/JobMatch");
 const ResumeProfile = require("./models/ResumeProfile");
 const ResumeVersion = require("./models/ResumeVersion");
 const User = require("./models/Users");
+const { hasPdfSignature, hasResumeStructure } = require("./resumeValidation");
 
 const bcrypt = require("bcryptjs");
 
@@ -186,6 +187,8 @@ app.post(
   authMiddleware,
   upload.single("resume"),
   async (req, res) => {
+  let parser;
+
   try {
 
     if (!req.file) {
@@ -196,13 +199,31 @@ app.post(
 
     const dataBuffer = fs.readFileSync(req.file.path);
 
-    const parser = new PDFParse({
+    if (!req.file.originalname.toLowerCase().endsWith(".pdf") || !hasPdfSignature(dataBuffer)) {
+      return res.status(400).json({
+        message: "Please upload a valid PDF resume.",
+      });
+    }
+
+    parser = new PDFParse({
       data: dataBuffer,
     });
 
-    const pdfData = await parser.getText();
+    let pdfData;
+    try {
+      pdfData = await parser.getText();
+    } catch (error) {
+      console.error("PDF parsing error:", error);
+      return res.status(400).json({
+        message: "Unable to read this PDF. Please upload a valid PDF resume.",
+      });
+    }
 
-    await parser.destroy();
+    if (!hasResumeStructure(pdfData.text)) {
+      return res.status(400).json({
+        message: "This PDF doesn't look like a resume. Please upload a resume with contact details and sections such as Experience, Education, or Skills.",
+      });
+    }
 
     console.log(
       "Resume received:",
@@ -341,6 +362,24 @@ ${pdfData.text}`,
       error: error.message,
 
     });
+  } finally {
+    if (parser) {
+      try {
+        await parser.destroy();
+      } catch (cleanupError) {
+        console.error("PDF parser cleanup error:", cleanupError);
+      }
+    }
+
+    if (req.file?.path) {
+      try {
+        await fs.promises.unlink(req.file.path);
+      } catch (cleanupError) {
+        if (cleanupError.code !== "ENOENT") {
+          console.error("Temporary upload cleanup error:", cleanupError);
+        }
+      }
+    }
   }
 });
 

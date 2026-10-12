@@ -15,6 +15,7 @@ function UploadResume() {
     setError("");
     if (!file) return;
     if (!file.name.toLowerCase().endsWith(".pdf")) {
+      setSelectedFile(null);
       setError("Please upload a PDF file.");
       return;
     }
