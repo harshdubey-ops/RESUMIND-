@@ -51,7 +51,30 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const upload = multer({ dest: "uploads/" });
+const MAX_RESUME_SIZE = 10 * 1024 * 1024;
+const upload = multer({
+  dest: "uploads/",
+  limits: { fileSize: MAX_RESUME_SIZE },
+});
+
+function uploadResume(req, res, next) {
+  upload.single("resume")(req, res, (error) => {
+    if (!error) {
+      return next();
+    }
+
+    if (error instanceof multer.MulterError && error.code === "LIMIT_FILE_SIZE") {
+      return res.status(413).json({
+        message: "PDF files must be 10 MB or smaller.",
+      });
+    }
+
+    console.error("Resume upload error:", error);
+    return res.status(500).json({
+      message: "Unable to upload resume. Please try again.",
+    });
+  });
+}
 
 
 // ==========================================
@@ -185,7 +208,7 @@ app.post("/login", async (req, res) => {
 app.post(
   "/upload",
   authMiddleware,
-  upload.single("resume"),
+  uploadResume,
   async (req, res) => {
   let parser;
 

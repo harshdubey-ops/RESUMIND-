@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import { Alert, Badge, Button, Card, Spinner } from "../components/ui";
 import { IconFile, IconLock, IconUpload } from "../components/icons";
 
+const MAX_RESUME_SIZE = 10 * 1024 * 1024;
+
 function UploadResume() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -17,6 +19,11 @@ function UploadResume() {
     if (!file.name.toLowerCase().endsWith(".pdf")) {
       setSelectedFile(null);
       setError("Please upload a PDF file.");
+      return;
+    }
+    if (file.size > MAX_RESUME_SIZE) {
+      setSelectedFile(null);
+      setError("PDF files must be 10 MB or smaller.");
       return;
     }
     setSelectedFile(file);
@@ -114,7 +121,7 @@ function UploadResume() {
                 </div>
               )}
 
-              <p className="mt-5 text-xs text-slate-500">PDF files only</p>
+              <p className="mt-5 text-xs text-slate-500">PDF files only, up to 10 MB</p>
             </div>
 
             <div className="mt-5 flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.03] p-4">
