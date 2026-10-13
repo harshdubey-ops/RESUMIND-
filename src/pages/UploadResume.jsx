@@ -158,12 +158,23 @@ function UploadResume() {
                     body: formData,
                   });
 
-                  const data = await response.json();
+                  const responseText = await response.text();
+                  let data;
+                  try {
+                    data = JSON.parse(responseText);
+                  } catch {
+                    if (!response.ok) {
+                      throw new Error(`Analysis server returned HTTP ${response.status}. Please try again shortly.`);
+                    }
+                    throw new Error("Analysis server returned an invalid response. Please try again.");
+                  }
 
                   if (!response.ok) {
-                    setLoading(false);
-                    setError(data.message || "Something went wrong");
-                    return;
+                    throw new Error(data.message || data.error || `Analysis failed (HTTP ${response.status}).`);
+                  }
+
+                  if (!data.analysis) {
+                    throw new Error("Analysis server did not return a resume analysis. Please try again.");
                   }
 
                   console.log("AI Analysis:", data.analysis);
@@ -176,8 +187,15 @@ function UploadResume() {
                   });
                 } catch (err) {
                   console.error("Upload error:", err);
+                  setError(
+                    err instanceof TypeError
+                      ? "Could not connect to the analysis server. Check your internet connection and try again."
+                      : err instanceof Error
+                        ? err.message
+                        : "Failed to analyze resume. Please try again."
+                  );
+                } finally {
                   setLoading(false);
-                  setError("Failed to analyze resume");
                 }
               }}
             >
