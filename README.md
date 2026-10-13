@@ -37,6 +37,12 @@ An AI-powered resume intelligence platform built using the MERN stack that helps
 ### AI
 - Google Gemini API
 
+## Backend environment
+
+Set `GEMINI_API_KEY` in `server/.env` for local development and in the backend
+hosting environment for deployment. `GEMINI_MODEL` is optional; it defaults to
+`gemini-2.5-flash`. Also configure `MONGO_URI` and `JWT_SECRET`.
+
 ## Project Structure
 
 ```text

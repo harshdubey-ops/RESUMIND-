@@ -39,7 +39,8 @@ mongoose
 // GEMINI
 // ==========================================
 
-const ai = new GoogleGenAI({});
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 
 // ==========================================
@@ -271,7 +272,7 @@ app.post(
 
         response = await ai.models.generateContent({
 
-          model: "gemini-3.5-flash",
+          model: GEMINI_MODEL,
 
           contents: `Analyze this resume and return ONLY valid JSON.
 
@@ -301,6 +302,9 @@ Rules:
 Resume:
 ${pdfData.text}`,
 
+          config: {
+            responseMimeType: "application/json",
+          },
         });
 
         console.log(
@@ -475,7 +479,7 @@ app.post("/job-match", authMiddleware, async (req, res) => {
         response =
           await ai.models.generateContent({
 
-            model: "gemini-3.5-flash",
+            model: GEMINI_MODEL,
 
             contents: `Compare the resume with the job description and return ONLY valid JSON.
 
@@ -504,6 +508,9 @@ ${resume.resumeText}
 JOB DESCRIPTION:
 ${jobDescription}`,
 
+            config: {
+              responseMimeType: "application/json",
+            },
           });
 
 
