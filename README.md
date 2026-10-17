@@ -26,9 +26,7 @@ An AI-powered resume intelligence platform built using the MERN stack that helps
 - Node.js
 - Express.js
 - JWT Authentication
-- Multer
 - PDF Parse
-- Mammoth
 
 ### Database
 - MongoDB
