@@ -6,13 +6,13 @@ export function Button({
   ...props
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40";
+    "inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-900/30";
 
   const variants = {
     primary:
-      "bg-blue-600 text-white shadow-sm shadow-blue-900/10 hover:bg-blue-700",
+      "bg-[#6b1f3a] text-white shadow-sm shadow-rose-950/15 hover:bg-[#54162d]",
     secondary:
-      "border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50",
+      "border border-[#eadbd7] bg-[#fffaf8] text-[#59464c] shadow-sm hover:bg-[#f8eeeb]",
     ghost: "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
     danger:
       "border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100",
@@ -71,7 +71,7 @@ export function Field({ id, label, children, hint }) {
 }
 
 const controlClass =
-  "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10";
+  "w-full rounded-xl border border-[#eadbd7] bg-[#fffaf8] px-3.5 py-3 text-sm text-[#35252b] placeholder:text-[#907d82] outline-none transition focus:border-[#b77d83] focus:ring-4 focus:ring-[#b77d83]/15";
 
 export function Input({ className = "", ...props }) {
   return <input className={`${controlClass} ${className}`} {...props} />;
@@ -116,9 +116,9 @@ export function ProgressBar({ value, className = "" }) {
   const width = Math.min(Math.max(Number(value) || 0, 0), 100);
 
   return (
-    <div className={`h-1.5 overflow-hidden rounded-full bg-slate-200 ${className}`}>
+    <div className={`h-1.5 overflow-hidden rounded-full bg-[#eadbd7] ${className}`}>
       <div
-        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-[width] duration-700"
+        className="h-full rounded-full bg-gradient-to-r from-[#70263f] to-[#b77d83] transition-[width] duration-700"
         style={{ width: `${width}%` }}
       />
     </div>
@@ -144,7 +144,7 @@ export function SectionHeader({ eyebrow, title, description, action }) {
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div className="min-w-0">
         {eyebrow && (
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#70263f]">
             {eyebrow}
           </p>
         )}
@@ -159,7 +159,7 @@ export function SectionHeader({ eyebrow, title, description, action }) {
 export function EmptyState({ icon, title, description, action }) {
   return (
     <Card className="px-6 py-16 text-center">
-      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-700">
+      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#ead1d4] bg-[#f7eaec] text-[#70263f]">
         {icon}
       </div>
       <h3 className="text-lg font-semibold text-slate-900">{title}</h3>

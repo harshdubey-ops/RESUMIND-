@@ -6,8 +6,8 @@
 
 :root {
   color-scheme: light;
-  background: #f5f7fb;
-  color: #172033;
+  background: #fbf7f5;
+  color: #35252b;
 }
 
 * {
@@ -27,8 +27,8 @@ body,
 body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  background: #f5f7fb;
-  color: #172033;
+  background: #fbf7f5;
+  color: #35252b;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -41,55 +41,80 @@ body {
 .resumind-app {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at 12% 0%, rgba(59, 130, 246, 0.06), transparent 32rem),
-    #f5f7fb;
-  color: #172033;
+    radial-gradient(ellipse at 12% 0%, rgba(183, 110, 121, 0.09), transparent 32rem),
+    #fbf7f5;
+  color: #35252b;
 }
 
 .resumind-app [class*="bg-[#05070d]"] {
-  background-color: #f5f7fb;
+  background-color: #fbf7f5;
 }
 
 .resumind-app [class*="bg-[#080d18]"],
 .resumind-app [class*="bg-[#070b14]"] {
-  background-color: #f8fafc;
+  background-color: #fcf8f6;
 }
 
 .resumind-app [class*="bg-[#0b101c]"] {
-  background-color: #fff;
+  background-color: #fffaf8;
 }
 
 .resumind-app [class*="bg-white/"] {
-  background-color: #f8fafc;
+  background-color: #fcf5f3;
 }
 
 .resumind-app [class*="border-white"] {
-  border-color: #e2e8f0;
+  border-color: #eadbd7;
+}
+
+.resumind-app [class~="bg-white"]:not(.resume-sheet) {
+  background-color: #fffaf8;
+}
+
+.resumind-app [class*="bg-sky-"],
+.resumind-app [class*="bg-blue-"] {
+  background-color: #f5e5e9;
+}
+
+.resumind-app [class*="bg-indigo-"],
+.resumind-app [class*="bg-violet-"] {
+  background-color: #f3e5e2;
+}
+
+.resumind-app [class*="border-sky-"],
+.resumind-app [class*="border-blue-"] {
+  border-color: #e6c3cb;
+}
+
+.resumind-app [class*="border-indigo-"],
+.resumind-app [class*="border-violet-"] {
+  border-color: #e6c9bf;
 }
 
 .resumind-app [class~="text-white"],
 .resumind-app [class~="text-slate-100"] {
-  color: #172033;
+  color: #35252b;
 }
 
 .resumind-app [class~="text-slate-200"] {
-  color: #263248;
+  color: #49363d;
 }
 
 .resumind-app [class~="text-slate-300"] {
-  color: #3d4b61;
+  color: #59464c;
 }
 
 .resumind-app [class~="text-slate-400"] {
-  color: #617087;
+  color: #79666c;
 }
 
 .resumind-app [class~="text-slate-500"] {
-  color: #77849a;
+  color: #907d82;
 }
 
-.resumind-app [class*="text-sky-"]:not([class~="text-transparent"]) {
-  color: #1769c2;
+.resumind-app [class*="text-sky-"]:not([class~="text-transparent"]),
+.resumind-app [class*="text-blue-"]:not([class~="text-transparent"]) {
+  color: #70263f;
 }
 
 .resumind-app [class*="text-emerald-"]:not([class~="text-transparent"]) {
@@ -106,28 +131,32 @@ body {
 
 .resumind-app [class*="text-indigo-"]:not([class~="text-transparent"]),
 .resumind-app [class*="text-violet-"]:not([class~="text-transparent"]) {
-  color: #5946b8;
+  color: #a56d70;
 }
 
-.resumind-app button.bg-blue-600.text-white {
+.resumind-app button.bg-\[\#6b1f3a\].text-white {
   color: #fff;
 }
 
 .resumind-app [class*="hover:text-white"]:hover {
-  color: #172033;
+  color: #35252b;
 }
 
 .resumind-app [class*="bg-gradient-to-r"][class*="bg-clip-text"] {
-  background-image: linear-gradient(90deg, #1769c2, #5946b8);
+  background-image: linear-gradient(90deg, #70263f, #a56d70);
+}
+
+.resumind-app [class*="bg-gradient-to-br"][class*="from-sky-"] {
+  background-image: linear-gradient(135deg, #f5e5e9, transparent 55%, #f3e5e2);
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.18);
-  color: #172033;
+  background: rgba(112, 38, 63, 0.18);
+  color: #35252b;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(37, 99, 235, 0.7);
+  outline: 2px solid rgba(112, 38, 63, 0.65);
   outline-offset: 2px;
 }
 

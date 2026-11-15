@@ -31,7 +31,7 @@ function Navbar({ variant = "full" }) {
   const linkClass = (path) =>
     `rounded-xl px-3.5 py-2.5 text-sm font-medium transition ${
       isActive(path)
-        ? "bg-blue-50 text-blue-700"
+        ? "bg-[#f7eaec] text-[#70263f]"
         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
     }`;
 
@@ -64,7 +64,7 @@ function Navbar({ variant = "full" }) {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-[#eadbd7] bg-[#fffaf8]/90 backdrop-blur-xl">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-md focus:bg-sky-500 focus:px-3 focus:py-2 focus:text-slate-950"
@@ -118,7 +118,7 @@ function Navbar({ variant = "full" }) {
 
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#eadbd7] bg-[#fcf5f3] text-[#59464c] lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -131,7 +131,7 @@ function Navbar({ variant = "full" }) {
       </nav>
 
       {variant !== "minimal" && open && (
-        <div id="mobile-nav" className="border-t border-slate-200 px-4 py-3 lg:hidden">
+        <div id="mobile-nav" className="border-t border-[#eadbd7] px-4 py-3 lg:hidden">
           <div className="flex flex-col gap-1">
             {user ? (
               <>
