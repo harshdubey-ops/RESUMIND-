@@ -406,7 +406,7 @@ function ResumeBuilder() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
+    <div className="resumind-app min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
       <Navbar />
       <main id="main" className="mx-auto max-w-[1500px] px-4 py-8 sm:px-6 sm:py-10">
         <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

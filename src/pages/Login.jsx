@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Alert, Button, Card, Field, Input, Spinner } from "../components/ui";
+import { Alert, Badge, Button, Card, Field, Input, Spinner } from "../components/ui";
 import { IconEye, IconEyeOff, IconLock } from "../components/icons";
 
 function Login() {
@@ -56,7 +56,7 @@ function Login() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
+    <div className="resumind-app relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute left-1/4 top-8 h-72 w-72 rounded-full bg-sky-500/10 blur-[120px]" />
         <div className="absolute bottom-8 right-1/4 h-72 w-72 rounded-full bg-indigo-500/10 blur-[120px]" />
@@ -65,8 +65,34 @@ function Login() {
       <div className="relative z-10">
         <Navbar variant="minimal" />
 
-        <main id="main" className="mx-auto flex min-h-[calc(100vh-64px)] max-w-md items-center px-4 py-12 sm:px-6">
-          <div className="w-full animate-slide-up">
+        <main id="main" className="mx-auto grid min-h-[calc(100vh-64px)] max-w-6xl items-center gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_0.9fr]">
+          <aside className="hidden max-w-xl lg:block">
+            <Badge tone="sky">
+              <IconLock className="h-3.5 w-3.5" />
+              Your private career workspace
+            </Badge>
+            <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-tight text-slate-900 xl:text-5xl">
+              Make your next career move with <span className="text-blue-700">clarity.</span>
+            </h2>
+            <p className="mt-5 max-w-lg text-base leading-7 text-slate-600">
+              Bring your resume, skills, and job goals together in one focused workspace.
+            </p>
+            <Card className="mt-8 p-5">
+              <div className="flex items-start gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-sm font-semibold text-blue-700">
+                  01
+                </span>
+                <div>
+                  <p className="font-semibold text-slate-900">Insights grounded in your resume</p>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">
+                    Understand your ATS score, strengths, and the next improvements to make.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </aside>
+
+          <div className="mx-auto w-full max-w-md animate-slide-up">
             <div className="mb-7 text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400">
                 Welcome back

@@ -6,17 +6,17 @@ export function Button({
   ...props
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60";
+    "inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40";
 
   const variants = {
     primary:
-      "bg-sky-500 text-slate-950 hover:bg-sky-400 shadow-[0_0_0_1px_rgba(56,189,248,0.25)]",
+      "bg-blue-600 text-white shadow-sm shadow-blue-900/10 hover:bg-blue-700",
     secondary:
-      "border border-white/12 bg-white/[0.04] text-slate-100 hover:bg-white/[0.08]",
-    ghost: "text-slate-300 hover:bg-white/[0.06] hover:text-white",
+      "border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50",
+    ghost: "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
     danger:
-      "border border-rose-400/25 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20",
-    white: "bg-white text-slate-950 hover:bg-slate-100",
+      "border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100",
+    white: "bg-white text-slate-900 shadow-sm hover:bg-slate-100",
   };
 
   return (
@@ -29,7 +29,7 @@ export function Button({
 export function Card({ children, className = "", ...props }) {
   return (
     <div
-      className={`rounded-2xl border border-white/[0.08] bg-white/[0.035] shadow-[0_18px_50px_-28px_rgba(0,0,0,0.8)] backdrop-blur-xl ${className}`}
+      className={`rounded-2xl border border-slate-200/80 bg-white shadow-[0_18px_45px_-34px_rgba(15,23,42,0.28)] ${className}`}
       {...props}
     >
       {children}
@@ -44,7 +44,7 @@ export function Badge({ children, tone = "sky", className = "" }) {
     rose: "border-rose-400/25 bg-rose-400/10 text-rose-300",
     amber: "border-amber-400/25 bg-amber-400/10 text-amber-300",
     violet: "border-violet-400/25 bg-violet-400/10 text-violet-300",
-    slate: "border-white/12 bg-white/5 text-slate-300",
+    slate: "border-slate-200 bg-slate-100 text-slate-600",
   };
 
   return (
@@ -71,7 +71,7 @@ export function Field({ id, label, children, hint }) {
 }
 
 const controlClass =
-  "w-full rounded-lg border border-white/10 bg-[#070b14] px-3.5 py-3 text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-sky-400/50 focus:ring-2 focus:ring-sky-400/15";
+  "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10";
 
 export function Input({ className = "", ...props }) {
   return <input className={`${controlClass} ${className}`} {...props} />;
@@ -116,9 +116,9 @@ export function ProgressBar({ value, className = "" }) {
   const width = Math.min(Math.max(Number(value) || 0, 0), 100);
 
   return (
-    <div className={`h-1.5 overflow-hidden rounded-full bg-white/10 ${className}`}>
+    <div className={`h-1.5 overflow-hidden rounded-full bg-slate-200 ${className}`}>
       <div
-        className="h-full rounded-full bg-gradient-to-r from-sky-400 to-indigo-400 transition-[width] duration-700"
+        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-[width] duration-700"
         style={{ width: `${width}%` }}
       />
     </div>
@@ -144,7 +144,7 @@ export function SectionHeader({ eyebrow, title, description, action }) {
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div className="min-w-0">
         {eyebrow && (
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
             {eyebrow}
           </p>
         )}
@@ -159,11 +159,11 @@ export function SectionHeader({ eyebrow, title, description, action }) {
 export function EmptyState({ icon, title, description, action }) {
   return (
     <Card className="px-6 py-16 text-center">
-      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-sky-300">
+      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-700">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
-      <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-400">{description}</p>
+      <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
+      <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600">{description}</p>
       {action && <div className="mt-6">{action}</div>}
     </Card>
   );
@@ -179,17 +179,17 @@ export function Modal({ title, subtitle, onClose, children, labelledBy = "modal-
       onClick={onClose}
     >
       <div
-        className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-2xl border border-white/10 bg-[#0b101c] p-5 shadow-2xl animate-slide-up sm:rounded-2xl sm:p-7"
+        className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-2xl border border-slate-200 bg-white p-5 shadow-2xl animate-slide-up sm:rounded-2xl sm:p-7"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-5 flex items-start justify-between gap-4">
           <div className="min-w-0">
             {subtitle && (
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-400">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-700">
                 {subtitle}
               </p>
             )}
-            <h2 id={labelledBy} className="mt-1 truncate text-xl font-semibold text-white">
+            <h2 id={labelledBy} className="mt-1 truncate text-xl font-semibold text-slate-900">
               {title}
             </h2>
           </div>
@@ -249,10 +249,10 @@ export function ScoreRing({ score, size = 128, label }) {
       aria-label={label || `Score ${value} out of 100`}
     >
       <div
-        className="flex items-center justify-center rounded-full bg-[#080d18]"
+        className="flex items-center justify-center rounded-full bg-white"
         style={{ width: inner, height: inner }}
       >
-        <span className="text-2xl font-bold text-white sm:text-3xl">{value}</span>
+        <span className="text-2xl font-bold text-slate-900 sm:text-3xl">{value}</span>
       </div>
     </div>
   );

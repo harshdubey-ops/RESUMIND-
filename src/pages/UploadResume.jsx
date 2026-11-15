@@ -36,7 +36,7 @@ function UploadResume() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
+    <div className="resumind-app relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute left-[-150px] top-[-150px] h-[400px] w-[400px] rounded-full bg-sky-600/10 blur-[120px]" />
         <div className="absolute right-[-150px] top-[300px] h-[450px] w-[450px] rounded-full bg-indigo-600/10 blur-[140px]" />

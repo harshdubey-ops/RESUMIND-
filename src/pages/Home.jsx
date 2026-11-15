@@ -18,7 +18,7 @@ function Home() {
   const goMatch = () => navigate(user ? "/job-match" : "/signup");
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
+    <div className="resumind-app relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute left-[-200px] top-[-160px] h-[480px] w-[480px] rounded-full bg-sky-500/[0.09] blur-[130px]" />
         <div className="absolute right-[-180px] top-[280px] h-[420px] w-[420px] rounded-full bg-indigo-500/[0.08] blur-[130px]" />

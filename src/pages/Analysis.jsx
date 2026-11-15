@@ -27,7 +27,7 @@ function Analysis() {
   const scoreTone = atsScore >= 80 ? "emerald" : atsScore >= 60 ? "amber" : "rose";
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
+    <div className="resumind-app relative min-h-screen overflow-x-hidden bg-[#05070d] text-slate-100">
       <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute left-[-150px] top-[-150px] h-[450px] w-[450px] rounded-full bg-sky-600/10 blur-[130px]" />
         <div className="absolute right-[-150px] top-[350px] h-[500px] w-[500px] rounded-full bg-indigo-600/10 blur-[150px]" />
