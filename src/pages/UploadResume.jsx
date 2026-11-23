@@ -170,7 +170,14 @@ function UploadResume() {
                   }
 
                   if (!response.ok) {
-                    throw new Error(data.message || data.error || `Analysis failed (HTTP ${response.status}).`);
+                    if (response.status === 401) {
+                      localStorage.removeItem("user");
+                      localStorage.removeItem("token");
+                      navigate("/login", { replace: true });
+                      throw new Error("Your session expired. Please sign in again.");
+                    }
+
+                    throw new Error(data.error || data.message || `Analysis failed (HTTP ${response.status}).`);
                   }
 
                   if (!data.analysis) {

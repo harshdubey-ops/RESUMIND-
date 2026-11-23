@@ -39,7 +39,7 @@ An AI-powered resume intelligence platform built using the MERN stack that helps
 
 Set `GEMINI_API_KEY` in `server/.env` for local development and in the backend
 hosting environment for deployment. `GEMINI_MODEL` is optional; it defaults to
-`gemini-3.5-flash`. Also configure `MONGO_URI` and `JWT_SECRET`. Login tokens
+`gemini-2.5-flash`. Also configure `MONGO_URI` and `JWT_SECRET`. Login tokens
 expire after 30 days by default; set `JWT_EXPIRES_IN` in the backend environment
 to change this duration (for example, `7d`).
 
